@@ -17,26 +17,15 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     
     var shoppingItemsObjects: [ShoppingItems] = []
     
-
 //    var shoppingListImages: [UIImage] = [#imageLiteral(resourceName: "paellaImage"), #imageLiteral(resourceName: "kipfilet"), #imageLiteral(resourceName: "paprika"), #imageLiteral(resourceName: "rijst") , #imageLiteral(resourceName: "onion"), #imageLiteral(resourceName: "oregano"), #imageLiteral(resourceName: "garnalen"), #imageLiteral(resourceName: "erwten") ]
-    
     
     
     @IBOutlet weak var textFieldOutlet: UITextField! 
     
     
-    
-//    var dictKeys : [String]?
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-       shoppingItemsObjects = ShoppingItemService.createShoppingItemObjects()
-        
-        
-//        let keys = shoppinglistDic.keys
-//        dictKeys = Array(keys)
-        
+        shoppingItemsObjects = ShoppingItemService.createShoppingItemObjects()
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -64,19 +53,14 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         
     }
 
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        let rowNumber = indexPath.row
-        
-        var storeObject = shoppingItemsObjects[indexPath.row]
+       
+        let storeObject = shoppingItemsObjects[indexPath.row]
         cell.textLabel?.text = storeObject.name
         
-        ///"\(rowNumber) \(shoppingList[indexPath.row])"
-        
-//        cell.imageView?.image = shoppingListImages[rowNumber]
-        
+//                                                                                   "\(rowNumber) \(shoppingList[indexPath.row])
+//                                                                                    cell.imageView?.image = shoppingListImages[rowNumber]
         
         // Configure the cell...
         
@@ -84,19 +68,19 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     }
     
     @IBAction func AddButton(_ sender: UIButton) {
-        var newitem = ShoppingItems.init(name: textFieldOutlet.text!, price: 1.0, weight: 1.0, photo: UIImage())
+        let newitem = ShoppingItems.init(name: textFieldOutlet.text!, price: 1.0, weight: 1.0, photo: UIImage())
         shoppingItemsObjects.append(newitem)
+        
         self.tableView.reloadData()
-        resignFirstResponder()
-    }
-
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-          view.endEditing(true)
-        
-        
     }
     
+//    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+//          view.endEditing(true)
+//    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   
+        // Dit geeft aan dat welke row je klikt in de alle shoppingItemObject dat het de selectedShopping item wordt voor volgende "prepare" functie.
         self.selectedShoppingItem = shoppingItemsObjects[indexPath.row]
 
         performSegue(withIdentifier: "detailViewSegue" , sender: self)
@@ -104,28 +88,12 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailViewSegue" {
+            
+                            // Hier zeg je dus: Ga naar "detailViewSegue" als op een selectedShoppingItem wordt geklikt, want check regel 82
             let detailView = segue.destination as! detailViewController
-//            detailView.shopItemName = name
-                detailView.selectedShoppingItem = self.selectedShoppingItem
-        }
+            detailView.selectedShoppingItem = self.selectedShoppingItem
     }
     
-    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-//        let rowNumber = indexPath.row
-//
-//
-//        cell.textLabel?.text = "\(rowNumber) \(shoppingList[rowNumber])"
-//
-//        cell.imageView?.image =  shoppingListImages[rowNumber]
-//
-//        // Configure the cell...
-//
-//        return cell
-//    }
-
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -134,7 +102,6 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     }
     */
 
-    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -144,8 +111,8 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
             
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
+          }
+      }
 
 
     /*

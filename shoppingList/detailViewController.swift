@@ -9,29 +9,22 @@
 import UIKit
 
 class detailViewController: UIViewController {
-
-
     
     @IBOutlet weak var itemLabel: UILabel!
-     var selectedShoppingItem: ShoppingItems?
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
-    
     @IBOutlet weak var imageViewFood: UIImageView!
     
-    
+    var selectedShoppingItem: ShoppingItems?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         itemLabel?.text = selectedShoppingItem?.name
         
-        if let price = selectedShoppingItem?.price,
-            let weight = selectedShoppingItem?.weight {
+        if let price = selectedShoppingItem?.price, let weight = selectedShoppingItem?.weight {
             priceLabel.text = "\(price)"
             weightLabel.text = "\(weight)"
         }
-
-
         
         imageViewFood?.image = selectedShoppingItem?.photo
         
