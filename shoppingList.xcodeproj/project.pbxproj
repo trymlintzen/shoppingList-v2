@@ -16,6 +16,7 @@
 		81FDA7201F90F22000E1ECF4 /* shoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA71F1F90F22000E1ECF4 /* shoppingListTableViewController.swift */; };
 		81FDA7241F94F4CD00E1ECF4 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA7231F94F4CD00E1ECF4 /* detailViewController.swift */; };
 		81FDA7261F94FFAA00E1ECF4 /* shoppingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA7251F94FFAA00E1ECF4 /* shoppingItems.swift */; };
+		81FDA72A1F95062400E1ECF4 /* ShoppingItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA7291F95062400E1ECF4 /* ShoppingItemService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		81FDA71F1F90F22000E1ECF4 /* shoppingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoppingListTableViewController.swift; sourceTree = "<group>"; };
 		81FDA7231F94F4CD00E1ECF4 /* detailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
 		81FDA7251F94FFAA00E1ECF4 /* shoppingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoppingItems.swift; sourceTree = "<group>"; };
+		81FDA7291F95062400E1ECF4 /* ShoppingItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				81FDA6EE1F90F0EB00E1ECF4 /* shoppingList */,
+				81FDA7281F9505D600E1ECF4 /* Data layer */,
 				81FDA7031F90F0EB00E1ECF4 /* shoppingListTests */,
 				81FDA70E1F90F0EB00E1ECF4 /* shoppingListUITests */,
 				81FDA6ED1F90F0EB00E1ECF4 /* Products */,
@@ -129,6 +132,14 @@
 				81FDA7111F90F0EB00E1ECF4 /* Info.plist */,
 			);
 			path = shoppingListUITests;
+			sourceTree = "<group>";
+		};
+		81FDA7281F9505D600E1ECF4 /* Data layer */ = {
+			isa = PBXGroup;
+			children = (
+				81FDA7291F95062400E1ECF4 /* ShoppingItemService.swift */,
+			);
+			path = "Data layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +280,7 @@
 				81FDA6F01F90F0EB00E1ECF4 /* AppDelegate.swift in Sources */,
 				81FDA7201F90F22000E1ECF4 /* shoppingListTableViewController.swift in Sources */,
 				81FDA7241F94F4CD00E1ECF4 /* detailViewController.swift in Sources */,
+				81FDA72A1F95062400E1ECF4 /* ShoppingItemService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

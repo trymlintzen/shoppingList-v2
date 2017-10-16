@@ -12,8 +12,11 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     
     @IBOutlet weak var addTextField: UITextField!
     var name = ""
-
+    var selectedShoppingItem: ShoppingItems?
     var shoppingList: [String] = ["Paella" , "Chicken", "Paprika" , "Rice", "Onions", "Oregano", "Garnalen", "Erwten"]
+    
+    var shoppingItemsObjects: [ShoppingItems] = []
+    
 
 //    var shoppingListImages: [UIImage] = [#imageLiteral(resourceName: "paellaImage"), #imageLiteral(resourceName: "kipfilet"), #imageLiteral(resourceName: "paprika"), #imageLiteral(resourceName: "rijst") , #imageLiteral(resourceName: "onion"), #imageLiteral(resourceName: "oregano"), #imageLiteral(resourceName: "garnalen"), #imageLiteral(resourceName: "erwten") ]
     
@@ -28,6 +31,9 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       shoppingItemsObjects = ShoppingItemService.createShoppingItemObjects()
+        
+        
 //        let keys = shoppinglistDic.keys
 //        dictKeys = Array(keys)
         
@@ -54,7 +60,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return shoppingList.count
+        return shoppingItemsObjects.count
         
     }
 
@@ -64,8 +70,10 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         let rowNumber = indexPath.row
         
+        var storeObject = shoppingItemsObjects[indexPath.row]
+        cell.textLabel?.text = storeObject.name
         
-        cell.textLabel?.text = "\(rowNumber) \(shoppingList[indexPath.row])"
+        ///"\(rowNumber) \(shoppingList[indexPath.row])"
         
 //        cell.imageView?.image = shoppingListImages[rowNumber]
         
@@ -76,7 +84,8 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     }
     
     @IBAction func AddButton(_ sender: UIButton) {
-        shoppingList.append(textFieldOutlet.text!)
+        var newitem = ShoppingItems.init(name: textFieldOutlet.text!, price: 1.0, weight: 1.0, photo: UIImage())
+        shoppingItemsObjects.append(newitem)
         self.tableView.reloadData()
         resignFirstResponder()
     }
@@ -88,7 +97,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        name = shoppingList[indexPath.row]
+        self.selectedShoppingItem = shoppingItemsObjects[indexPath.row]
 
         performSegue(withIdentifier: "detailViewSegue" , sender: self)
     }
@@ -96,8 +105,8 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailViewSegue" {
             let detailView = segue.destination as! detailViewController
-            detailView.shopItemName = name
-            
+//            detailView.shopItemName = name
+                detailView.selectedShoppingItem = self.selectedShoppingItem
         }
     }
     
@@ -129,7 +138,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            shoppingList.remove(at: indexPath.row)
+            shoppingItemsObjects.remove(at: indexPath.row)
 //   Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
             

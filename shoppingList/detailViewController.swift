@@ -13,15 +13,27 @@ class detailViewController: UIViewController {
 
     
     @IBOutlet weak var itemLabel: UILabel!
-    var shopItemName: String?
+     var selectedShoppingItem: ShoppingItems?
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
     
-    
+    @IBOutlet weak var imageViewFood: UIImageView!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        itemLabel?.text = shopItemName
+        itemLabel?.text = selectedShoppingItem?.name
+        
+        if let price = selectedShoppingItem?.price,
+            let weight = selectedShoppingItem?.weight {
+            priceLabel.text = "\(price)"
+            weightLabel.text = "\(weight)"
+        }
+
+
+        
+        imageViewFood?.image = selectedShoppingItem?.photo
         
         // Do any additional setup after loading the view.
     }
