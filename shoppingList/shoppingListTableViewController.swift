@@ -8,11 +8,31 @@
 
 import UIKit
 
-class shoppingListTableViewController: UITableViewController {
+class shoppingListTableViewController: UITableViewController, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var addTextField: UITextField!
+    var name = ""
 
+    var shoppingList: [String] = ["Paella" , "Chicken", "Paprika" , "Rice", "Onions", "Oregano", "Garnalen", "Erwten"]
+
+//    var shoppingListImages: [UIImage] = [#imageLiteral(resourceName: "paellaImage"), #imageLiteral(resourceName: "kipfilet"), #imageLiteral(resourceName: "paprika"), #imageLiteral(resourceName: "rijst") , #imageLiteral(resourceName: "onion"), #imageLiteral(resourceName: "oregano"), #imageLiteral(resourceName: "garnalen"), #imageLiteral(resourceName: "erwten") ]
+    
+    
+    
+    @IBOutlet weak var textFieldOutlet: UITextField! 
+    
+    
+    
+//    var dictKeys : [String]?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        let keys = shoppinglistDic.keys
+//        dictKeys = Array(keys)
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,23 +49,72 @@ class shoppingListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return shoppingList.count
+        
     }
 
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        cell.textLabel?.text = "Hello word"
-
+        let rowNumber = indexPath.row
+        
+        
+        cell.textLabel?.text = "\(rowNumber) \(shoppingList[indexPath.row])"
+        
+//        cell.imageView?.image = shoppingListImages[rowNumber]
+        
+        
         // Configure the cell...
-
+        
         return cell
     }
+    
+    @IBAction func AddButton(_ sender: UIButton) {
+        shoppingList.append(textFieldOutlet.text!)
+        self.tableView.reloadData()
+        resignFirstResponder()
+    }
+
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+          view.endEditing(true)
+        
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        name = shoppingList[indexPath.row]
+
+        performSegue(withIdentifier: "detailViewSegue" , sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailViewSegue" {
+            let detailView = segue.destination as! detailViewController
+            detailView.shopItemName = name
+            
+        }
+    }
+    
+    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+//        let rowNumber = indexPath.row
+//
+//
+//        cell.textLabel?.text = "\(rowNumber) \(shoppingList[rowNumber])"
+//
+//        cell.imageView?.image =  shoppingListImages[rowNumber]
+//
+//        // Configure the cell...
+//
+//        return cell
+//    }
 
 
     /*
@@ -56,17 +125,19 @@ class shoppingListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            shoppingList.remove(at: indexPath.row)
+//   Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.

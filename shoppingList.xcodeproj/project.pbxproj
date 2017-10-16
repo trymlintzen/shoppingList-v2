@@ -14,6 +14,8 @@
 		81FDA7051F90F0EB00E1ECF4 /* shoppingListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA7041F90F0EB00E1ECF4 /* shoppingListTests.swift */; };
 		81FDA7101F90F0EB00E1ECF4 /* shoppingListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA70F1F90F0EB00E1ECF4 /* shoppingListUITests.swift */; };
 		81FDA7201F90F22000E1ECF4 /* shoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA71F1F90F22000E1ECF4 /* shoppingListTableViewController.swift */; };
+		81FDA7241F94F4CD00E1ECF4 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA7231F94F4CD00E1ECF4 /* detailViewController.swift */; };
+		81FDA7261F94FFAA00E1ECF4 /* shoppingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA7251F94FFAA00E1ECF4 /* shoppingItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		81FDA70F1F90F0EB00E1ECF4 /* shoppingListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoppingListUITests.swift; sourceTree = "<group>"; };
 		81FDA7111F90F0EB00E1ECF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81FDA71F1F90F22000E1ECF4 /* shoppingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoppingListTableViewController.swift; sourceTree = "<group>"; };
+		81FDA7231F94F4CD00E1ECF4 /* detailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
+		81FDA7251F94FFAA00E1ECF4 /* shoppingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoppingItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				81FDA6EF1F90F0EB00E1ECF4 /* AppDelegate.swift */,
 				81FDA6F31F90F0EB00E1ECF4 /* Main.storyboard */,
 				81FDA71F1F90F22000E1ECF4 /* shoppingListTableViewController.swift */,
+				81FDA7231F94F4CD00E1ECF4 /* detailViewController.swift */,
+				81FDA7251F94FFAA00E1ECF4 /* shoppingItems.swift */,
 				81FDA6F61F90F0EB00E1ECF4 /* Assets.xcassets */,
 				81FDA6F81F90F0EB00E1ECF4 /* LaunchScreen.storyboard */,
 				81FDA6FB1F90F0EB00E1ECF4 /* Info.plist */,
@@ -259,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81FDA7261F94FFAA00E1ECF4 /* shoppingItems.swift in Sources */,
 				81FDA6F01F90F0EB00E1ECF4 /* AppDelegate.swift in Sources */,
 				81FDA7201F90F22000E1ECF4 /* shoppingListTableViewController.swift in Sources */,
+				81FDA7241F94F4CD00E1ECF4 /* detailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
