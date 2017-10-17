@@ -92,6 +92,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
                             // Hier zeg je dus: Ga naar "detailViewSegue" als op een selectedShoppingItem wordt geklikt, want check regel 82
             let detailView = segue.destination as! detailViewController
             detailView.selectedShoppingItem = self.selectedShoppingItem
+         }
     }
     
     /*
@@ -113,7 +114,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
           }
       }
-
+    
 
     /*
     // Override to support rearranging the table view.
@@ -141,3 +142,4 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     */
 
 }
+
