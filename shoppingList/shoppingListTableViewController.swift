@@ -25,8 +25,11 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        shoppingItemsObjects = ShoppingItemService.createShoppingItemObjects()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(shoppingListTableViewController.notifyObservers(notification:)), name: NSNotification.Name(rawValue: "myCoffee"), object: nil)
+        ShoppingItemService.createShoppingItemObjects()
+        
+    
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -35,6 +38,12 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    @objc func notifyObservers(notification: NSNotification) {
+        var shopItemDict = notification.userInfo as! Dictionary<String , [ShoppingItems]>
+        shoppingItemsObjects = shopItemDict["data"]!
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
