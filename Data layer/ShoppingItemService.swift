@@ -10,12 +10,12 @@ import Foundation
 
 class ShoppingItemService {
     
-    static func createShoppingItemObjects() -> [ShoppingItems] {
+    static func createShoppingItemObjects()  {
        let paella = ShoppingItems.init(name: "paella", price: 5.0, weight: 50.0, photo: #imageLiteral(resourceName: "paellaImage"))
         let chicken = ShoppingItems.init(name: "chicken", price: 4.0, weight: 30.0, photo: #imageLiteral(resourceName: "kipfilet"))
         let paprika = ShoppingItems.init(name: "paprika", price: 2.0, weight: 1.5, photo: #imageLiteral(resourceName: "paprika"))
         
-        return [paella, chicken, paprika]
+        
     }
     
     
