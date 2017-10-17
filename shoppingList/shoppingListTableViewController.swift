@@ -40,7 +40,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
 
     @objc func notifyObservers(notification: NSNotification) {
         var shopItemDict = notification.userInfo as! Dictionary<String , [ShoppingItems]>
-        shoppingItemsObjects = shopItemDict["data"]!
+        shoppingItemsObjects = shopItemDict[notificationIDs.shoppingData]!
     }
     
     
@@ -92,11 +92,11 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         // Dit geeft aan dat welke row je klikt in de alle shoppingItemObject dat het de selectedShopping item wordt voor volgende "prepare" functie.
         self.selectedShoppingItem = shoppingItemsObjects[indexPath.row]
 
-        performSegue(withIdentifier: "detailViewSegue" , sender: self)
+        performSegue(withIdentifier: seguesIdentifiers.detailViewSegue , sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailViewSegue" {
+        if segue.identifier == seguesIdentifiers.detailViewSegue {
             
                             // Hier zeg je dus: Ga naar "detailViewSegue" als op een selectedShoppingItem wordt geklikt, want check regel 82
             let detailView = segue.destination as! detailViewController

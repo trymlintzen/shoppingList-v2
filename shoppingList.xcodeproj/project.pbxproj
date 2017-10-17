@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8130F6BC1F96549C009A6091 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130F6BB1F96549C009A6091 /* Constants.swift */; };
 		81FDA6F01F90F0EB00E1ECF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FDA6EF1F90F0EB00E1ECF4 /* AppDelegate.swift */; };
 		81FDA6F51F90F0EB00E1ECF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81FDA6F31F90F0EB00E1ECF4 /* Main.storyboard */; };
 		81FDA6F71F90F0EB00E1ECF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81FDA6F61F90F0EB00E1ECF4 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8130F6BB1F96549C009A6091 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		81FDA6EC1F90F0EB00E1ECF4 /* shoppingList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shoppingList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81FDA6EF1F90F0EB00E1ECF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81FDA6F41F90F0EB00E1ECF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,10 +82,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8130F6BD1F965593009A6091 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8130F6BB1F96549C009A6091 /* Constants.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		81FDA6E31F90F0EB00E1ECF4 = {
 			isa = PBXGroup;
 			children = (
 				81FDA6EE1F90F0EB00E1ECF4 /* shoppingList */,
+				8130F6BD1F965593009A6091 /* Extensions */,
 				81FDA7281F9505D600E1ECF4 /* Data layer */,
 				81FDA7031F90F0EB00E1ECF4 /* shoppingListTests */,
 				81FDA70E1F90F0EB00E1ECF4 /* shoppingListUITests */,
@@ -281,6 +292,7 @@
 				81FDA7201F90F22000E1ECF4 /* shoppingListTableViewController.swift in Sources */,
 				81FDA7241F94F4CD00E1ECF4 /* detailViewController.swift in Sources */,
 				81FDA72A1F95062400E1ECF4 /* ShoppingItemService.swift in Sources */,
+				8130F6BC1F96549C009A6091 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
