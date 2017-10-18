@@ -16,9 +16,11 @@ class ShoppingItemService {
         let paprika = ShoppingItems.init(name: "paprika", price: 2.0, weight: 1.5, photo: #imageLiteral(resourceName: "paprika"))
         
         let allItems = [paella, chicken, paprika]
-        let allItemsDic = [notificationIDs.shoppingData : allItems]
+        let allItemsDic = [dictKey.shoppingData : allItems]
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "myCoffee"), object: self, userInfo: allItemsDic)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIDs.shoppingID),
+                                        object: self,
+                                        userInfo: allItemsDic)
     }
     
     

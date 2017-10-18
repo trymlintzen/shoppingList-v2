@@ -26,9 +26,14 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(shoppingListTableViewController.notifyObservers(notification:)), name: NSNotification.Name(rawValue: "myCoffee"), object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(shoppingListTableViewController.notifyObservers(notification:)),
+                                               name: NSNotification.Name(rawValue: notificationIDs.shoppingID),
+                                               object: nil)
         ShoppingItemService.createShoppingItemObjects()
         
+        let shoppingNib = UINib(nibName: "ShoppingCell", bundle: nil)
+        self.tableView.register(shoppingNib, forCellReuseIdentifier: TableCellIDs.shoppingCellID)
     
         
         // Uncomment the following line to preserve selection between presentations
@@ -40,7 +45,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
 
     @objc func notifyObservers(notification: NSNotification) {
         var shopItemDict = notification.userInfo as! Dictionary<String , [ShoppingItems]>
-        shoppingItemsObjects = shopItemDict[notificationIDs.shoppingData]!
+        shoppingItemsObjects = shopItemDict[dictKey.shoppingData]!
     }
     
     
@@ -62,17 +67,13 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         
     }
 
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-       
+         let cell = tableView.dequeueReusableCell(withIdentifier: TableCellIDs.shoppingCellID, for: indexPath) as! ShoppingCell
+   
         let storeObject = shoppingItemsObjects[indexPath.row]
-        cell.textLabel?.text = storeObject.name
-        
-//                                                                                   "\(rowNumber) \(shoppingList[indexPath.row])
-//                                                                                    cell.imageView?.image = shoppingListImages[rowNumber]
-        
-        // Configure the cell...
-        
+        cell.labelNameMain?.text = storeObject.name
         return cell
     }
     
@@ -88,18 +89,18 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
 //    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-   
+    
         // Dit geeft aan dat welke row je klikt in de alle shoppingItemObject dat het de selectedShopping item wordt voor volgende "prepare" functie.
         self.selectedShoppingItem = shoppingItemsObjects[indexPath.row]
 
-        performSegue(withIdentifier: seguesIdentifiers.detailViewSegue , sender: self)
+        performSegue(withIdentifier: seguesIdentifiers.detailTableSegue , sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == seguesIdentifiers.detailViewSegue {
+        if segue.identifier == seguesIdentifiers.detailTableSegue {
             
-                            // Hier zeg je dus: Ga naar "detailViewSegue" als op een selectedShoppingItem wordt geklikt, want check regel 82
-            let detailView = segue.destination as! detailViewController
+                            // Hier zeg je dus: Ga naar "detail(View/Table)Segue" als op een selectedShoppingItem wordt geklikt, want check regel 82
+            let detailView = segue.destination as! detailTableViewController
             detailView.selectedShoppingItem = self.selectedShoppingItem
          }
     }
@@ -123,6 +124,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
           }
       }
+    
     
 
     /*

@@ -8,11 +8,19 @@
 
 import Foundation
 
-
+struct dictKey {
+    static let shoppingData = "data"
+}
 struct notificationIDs {
-    static let shoppingData = "ShoppingItemListener"
+    static let shoppingID = "ShoppingItemListener"
 }
 
 struct seguesIdentifiers {
     static let detailViewSegue = "detailViewSegue"
+    static let detailTableSegue = "detailTableSegue"
+}
+
+struct TableCellIDs {
+    static let shoppingCellID = "ShoppingCellID"
+    static let shoppingDetailID = "ShoppingDetailCellID"
 }

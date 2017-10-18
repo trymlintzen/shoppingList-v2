@@ -21,9 +21,14 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>"This app uses the camera to associate photos with items"</string>
+	<string>&quot;This app uses the camera to associate photos with items&quot;</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>"This app uses Photos library to associate photos with items."</string>
+	<string>&quot;This app uses Photos library to associate photos with items.&quot;</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>katyfont.ttf</string>
+		<string>Handwritingfont.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
