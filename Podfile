@@ -6,7 +6,8 @@ target 'shoppingList' do
   use_frameworks!
 
   # Pods for shoppingList
-pod 'Firebase/Core'
+pod 'Firebase'
+pod 'Firebase/Database'
 
   target 'shoppingListTests' do
     inherit! :search_paths

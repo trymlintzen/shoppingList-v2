@@ -14,12 +14,13 @@ class ShoppingItems {
     var name: String
     var price: Double
     var weight: Double
-    var photo: UIImage
-    
-    init(name: String, price: Double, weight: Double, photo: UIImage) {
+    var photo: UIImage = UIImage()
+    var photoUrlString: [String]
+
+    init(name: String, price: Double, weight: Double, photoUrlString: [String]) {
         self.name = name
         self.price = price
         self.weight = weight
-        self.photo = photo
+        self.photoUrlString = photoUrlString
     }
 }

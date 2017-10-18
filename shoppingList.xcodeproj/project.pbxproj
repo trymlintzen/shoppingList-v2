@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		327E6FAF6CED7B1083513A74 /* Pods_shoppingListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B29761CA45403A9FA2114D9 /* Pods_shoppingListUITests.framework */; };
 		5F5437C31CB447B0398A2B18 /* Pods_shoppingListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4934BFA2A82E63305BE7D978 /* Pods_shoppingListTests.framework */; };
+		811C86BF1F97AF8000748B78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8130F6CE1F979378009A6091 /* GoogleService-Info.plist */; };
 		8130F6BC1F96549C009A6091 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130F6BB1F96549C009A6091 /* Constants.swift */; };
 		8130F6C11F9745D6009A6091 /* ShoppingDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8130F6BF1F9745D6009A6091 /* ShoppingDetailCell.swift */; };
 		8130F6C21F9745D6009A6091 /* ShoppingDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8130F6C01F9745D6009A6091 /* ShoppingDetailCell.xib */; };
@@ -349,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8130F6CB1F975F5B009A6091 /* katyfont.ttf in Resources */,
+				811C86BF1F97AF8000748B78 /* GoogleService-Info.plist in Resources */,
 				81FDA6FA1F90F0EB00E1ECF4 /* LaunchScreen.storyboard in Resources */,
 				8130F6CA1F975F52009A6091 /* Handwritingfont.ttf in Resources */,
 				8130F6C91F9757FB009A6091 /* ShoppingCell.xib in Resources */,
@@ -497,11 +499,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-shoppingList/Pods-shoppingList-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -30,7 +30,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
                                                selector: #selector(shoppingListTableViewController.notifyObservers(notification:)),
                                                name: NSNotification.Name(rawValue: notificationIDs.shoppingID),
                                                object: nil)
-        ShoppingItemService.createShoppingItemObjects()
+        ShoppingItemService.sharedInstance.getShoppingListData()
         
         let shoppingNib = UINib(nibName: "ShoppingCell", bundle: nil)
         self.tableView.register(shoppingNib, forCellReuseIdentifier: TableCellIDs.shoppingCellID)
@@ -46,6 +46,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     @objc func notifyObservers(notification: NSNotification) {
         var shopItemDict = notification.userInfo as! Dictionary<String , [ShoppingItems]>
         shoppingItemsObjects = shopItemDict[dictKey.shoppingData]!
+        self.tableView.reloadData()
     }
     
     
@@ -78,7 +79,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     }
     
     @IBAction func AddButton(_ sender: UIButton) {
-        let newitem = ShoppingItems.init(name: textFieldOutlet.text!, price: 1.0, weight: 1.0, photo: UIImage())
+        let newitem = ShoppingItems.init(name: textFieldOutlet.text!, price: 1.0, weight: 1.0, photoUrlString: [])
         shoppingItemsObjects.append(newitem)
         
         self.tableView.reloadData()
