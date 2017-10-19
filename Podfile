@@ -8,6 +8,7 @@ target 'shoppingList' do
   # Pods for shoppingList
 pod 'Firebase'
 pod 'Firebase/Database'
+pod 'Kingfisher', '~> 4.0'
 
   target 'shoppingListTests' do
     inherit! :search_paths

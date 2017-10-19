@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class detailTableViewController: UITableViewController {
 
@@ -34,7 +35,8 @@ class detailTableViewController: UITableViewController {
             cell.weightLabel.text = "\(weight)"
         }
         
-        cell.ItemImage.image = selectedShoppingItem?.photo
+        let url = URL(string: (selectedShoppingItem?.photoUrlString)!)
+        cell.ItemImage.kf.setImage(with: url)
         return cell
     }
 

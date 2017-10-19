@@ -13,6 +13,7 @@ struct dictKey {
 }
 struct notificationIDs {
     static let shoppingID = "ShoppingItemListener"
+    static let addShoppingID = "ShoppingItemAdd"
 }
 
 struct seguesIdentifiers {

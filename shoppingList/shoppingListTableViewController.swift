@@ -30,11 +30,17 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
                                                selector: #selector(shoppingListTableViewController.notifyObservers(notification:)),
                                                name: NSNotification.Name(rawValue: notificationIDs.shoppingID),
                                                object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(shoppingListTableViewController.addNotifyObservers),
+                                               name: NSNotification.Name(rawValue: notificationIDs.addShoppingID),
+                                               object: nil)
+        
         ShoppingItemService.sharedInstance.getShoppingListData()
         
         let shoppingNib = UINib(nibName: "ShoppingCell", bundle: nil)
         self.tableView.register(shoppingNib, forCellReuseIdentifier: TableCellIDs.shoppingCellID)
-    
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -48,6 +54,14 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         shoppingItemsObjects = shopItemDict[dictKey.shoppingData]!
         self.tableView.reloadData()
     }
+    
+    @objc func addNotifyObservers(notification: NSNotification) {
+        var addShopItemDict = notification.userInfo as! Dictionary<String, ShoppingItems>
+        var oneObject = addShopItemDict[dictKey.shoppingData]
+        shoppingItemsObjects.append(oneObject!)
+        self.tableView.reloadData()
+    }
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -67,8 +81,6 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         return shoppingItemsObjects.count
         
     }
-
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: TableCellIDs.shoppingCellID, for: indexPath) as! ShoppingCell
@@ -79,7 +91,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     }
     
     @IBAction func AddButton(_ sender: UIButton) {
-        let newitem = ShoppingItems.init(name: textFieldOutlet.text!, price: 1.0, weight: 1.0, photoUrlString: [])
+        let newitem = ShoppingItems.init(name: textFieldOutlet.text!, price: 1.0, weight: 1.0, photoUrlString: "", details: "" )
         shoppingItemsObjects.append(newitem)
         
         self.tableView.reloadData()

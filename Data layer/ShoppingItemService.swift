@@ -10,6 +10,8 @@ import Foundation
 import Firebase
 import FirebaseCore
 import FirebaseDatabase
+
+
 class ShoppingItemService {
     
     public static let sharedInstance = ShoppingItemService()  // Singleton: https://en.wikipedia.org/wiki/Singleton_pattern
@@ -24,34 +26,53 @@ class ShoppingItemService {
         ref.observeSingleEvent(of: .value , with: { (snapshot) in
             if let data = snapshot.value as? NSDictionary,
                 let shoppingItem = data["ShoppingItems"] as? NSDictionary {
-                print(data)
-                var shopitems: [ShoppingItems] = []
-
-                    for key in shoppingItem.keyEnumerator() {
-                        
-                        if let item = shoppingItem[key] as? NSDictionary,
-                            let name = item["name"] as? String,
-                            let price = item["price"] ,
-                            let photo = item["photo"] as? [String],
-                            let weight = item["weight"] {
-                                let shoppingitemObject = ShoppingItems.init(name: name,
-                                                                      price: price as! Double,
-                                                                      weight: weight as! Double,
-                                                                      photoUrlString: photo)
-                            shopitems.append(shoppingitemObject)
-                        }
-                    }
+                    let a = self.dictToObject(shoppingItem: shoppingItem)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIDs.shoppingID),
                                                     object: self,
-                                                    userInfo: [dictKey.shoppingData : shopitems])
-                    
-                    
+                                                    userInfo: [dictKey.shoppingData : a])
                 }
                 
             })
-        
+
+        ref.child("ShoppingItems").observe(.childAdded, with: { (snapshot) in
+            if let dataItem = snapshot.value as? NSDictionary,
+                let itemObject = self.oneDictionaryToOneObject(item: dataItem) {
+                
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIDs.addShoppingID),
+                                                    object: self,
+                                                    userInfo: [dictKey.shoppingData : itemObject])
+                }
+        })
     }
     
+    func dictToObject(shoppingItem: NSDictionary) -> [ShoppingItems] {
+        var shopitems: [ShoppingItems] = []
+        
+        for key in shoppingItem.keyEnumerator() {
+            if let item = shoppingItem[key] as? NSDictionary,
+                let itemObj = oneDictionaryToOneObject(item: item) {
+                shopitems.append(itemObj)
+            }
+        }
+        return shopitems
+    }
+    
+    func oneDictionaryToOneObject(item : NSDictionary) -> ShoppingItems? {
+        if let name = item["name"] as? String,
+            let price = item["price"] as? Double,
+            let details = item["details"] as? String,
+            let photoUrlString = item["photo"] as? String,
+            let weight = item["weight"] as? Double{
+            let shoppingitemObject = ShoppingItems.init(name: name,
+                                                        price: price,
+                                                        weight: weight,
+                                                        photoUrlString: photoUrlString,
+                                                        details: details )
+            return shoppingitemObject
+        } else {
+            return nil
+        }
+    }
     
     
 //    static func createShoppingItemObjects()  {
