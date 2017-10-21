@@ -35,13 +35,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="GHV-42-XpH">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="Dai-8v-myx">
+                        <barButtonItem key="leftBarButtonItem" id="Dai-8v-myx">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LvY-bi-NnW">
                                 <rect key="frame" x="16" y="7" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add item"/>
                                 <connections>
-                                    <action selector="AddButton:" destination="k0Y-hB-Lc0" eventType="touchUpInside" id="Izm-BZ-nQ1"/>
+                                    <action selector="addShoppingItem:" destination="k0Y-hB-Lc0" eventType="touchUpInside" id="I2n-Rf-C3O"/>
                                 </connections>
                             </button>
                         </barButtonItem>

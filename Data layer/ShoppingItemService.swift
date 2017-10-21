@@ -31,18 +31,21 @@ class ShoppingItemService {
                                                     object: self,
                                                     userInfo: [dictKey.shoppingData : a])
                 }
-                
             })
 
         ref.child("ShoppingItems").observe(.childAdded, with: { (snapshot) in
             if let dataItem = snapshot.value as? NSDictionary,
                 let itemObject = self.oneDictionaryToOneObject(item: dataItem) {
-                
+                    itemObject.id = snapshot.key
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIDs.addShoppingID),
                                                     object: self,
                                                     userInfo: [dictKey.shoppingData : itemObject])
                 }
-        })
+            })
+        
+//        ref.child("ShoppingItems").observe(., with: { (snapshot) in
+//        })
+//
     }
     
     func dictToObject(shoppingItem: NSDictionary) -> [ShoppingItems] {
@@ -51,6 +54,7 @@ class ShoppingItemService {
         for key in shoppingItem.keyEnumerator() {
             if let item = shoppingItem[key] as? NSDictionary,
                 let itemObj = oneDictionaryToOneObject(item: item) {
+                itemObj.id = key as! String
                 shopitems.append(itemObj)
             }
         }
@@ -62,18 +66,37 @@ class ShoppingItemService {
             let price = item["price"] as? Double,
             let details = item["details"] as? String,
             let photoUrlString = item["photo"] as? String,
-            let weight = item["weight"] as? Double{
+            let weight = item["weight"] as? Double {
             let shoppingitemObject = ShoppingItems.init(name: name,
                                                         price: price,
                                                         weight: weight,
                                                         photoUrlString: photoUrlString,
-                                                        details: details )
+                                                        details: details)
             return shoppingitemObject
         } else {
             return nil
         }
     }
     
+    func objectToDic (shoppingitemObject: ShoppingItems) -> Dictionary<String, Any> {
+        var ObjectDict = Dictionary<String, Any>()
+             ObjectDict["name"] = shoppingitemObject.name 
+             ObjectDict["price"] = shoppingitemObject.price
+        ObjectDict["details"] = shoppingitemObject.details
+             ObjectDict["photo"] = shoppingitemObject.photoUrlString
+             ObjectDict["weight"] = shoppingitemObject.weight
+             ObjectDict["id"] = shoppingitemObject.id
+        return ObjectDict
+    }
+    
+    func addShopItem(shopItem: ShoppingItems) {
+        let AddDict = objectToDic(shoppingitemObject: shopItem)
+        ref.child("ShoppingItems").child(shopItem.id).setValue(AddDict)
+    }
+    
+    func deleteShopItem(shopItem: ShoppingItems) {
+        ref.child("ShoppingItems").child(shopItem.id).removeValue()
+    }
     
 //    static func createShoppingItemObjects()  {
 //       let paella = ShoppingItems.init(name: "paella", price: 5.0, weight: 50.0, photo: #imageLiteral(resourceName: "paellaImage"))

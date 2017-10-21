@@ -17,6 +17,7 @@ class ShoppingItems {
     var photo: UIImage = UIImage()
     var photoUrlString: String
     var details: String
+    var id : String = NSUUID().uuidString
 
     init(name: String, price: Double, weight: Double, photoUrlString: String, details: String) {
         self.name = name

@@ -57,7 +57,7 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     
     @objc func addNotifyObservers(notification: NSNotification) {
         var addShopItemDict = notification.userInfo as! Dictionary<String, ShoppingItems>
-        var oneObject = addShopItemDict[dictKey.shoppingData]
+        let oneObject = addShopItemDict[dictKey.shoppingData]
         shoppingItemsObjects.append(oneObject!)
         self.tableView.reloadData()
     }
@@ -90,11 +90,55 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         return cell
     }
     
-    @IBAction func AddButton(_ sender: UIButton) {
-        let newitem = ShoppingItems.init(name: textFieldOutlet.text!, price: 1.0, weight: 1.0, photoUrlString: "", details: "" )
-        shoppingItemsObjects.append(newitem)
+//    @IBAction func AddButton(_ sender: UIButton) {
+//        let newitem = ShoppingItems.init(name: textFieldOutlet.text!, price: 1.0, weight: 1.0, photoUrlString: "", details: "" )
+//        shoppingItemsObjects.append(newitem)
+//
+//        self.tableView.reloadData()
+//    }
+    
+    @IBAction func addShoppingItem(_ sender: Any) {
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "New Shopping Item", message: "Enter a new shopping Item", preferredStyle: .alert)
         
-        self.tableView.reloadData()
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.placeholder = "The new item"
+        }
+        alert.addTextField { (priceField) in
+            priceField.keyboardType = .numberPad
+            priceField.placeholder = "The new Price"
+        }
+        alert.addTextField { (weightField) in
+            weightField.keyboardType = .numberPad
+            weightField.placeholder = "The new weight"
+        }
+        alert.addTextField { (detailsTextField) in
+            detailsTextField.placeholder = "The new details"
+        }
+        alert.addTextField { (imageTextField) in
+            imageTextField.placeholder = "The new imageURL"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            if let textField = alert?.textFields?[0].text,
+                let priceField = alert?.textFields?[1].text,
+                let priceDouble = Double(priceField),
+                let weightfield = alert?.textFields?[2].text,
+                let weightDouble = Double(weightfield),
+                let photoUrlStringField = alert?.textFields?[3].text,
+                let details = alert?.textFields?[4].text
+            {
+                let shopItem = ShoppingItems.init(name: textField, price: priceDouble, weight: weightDouble, photoUrlString: photoUrlStringField, details: details)
+                
+                ShoppingItemService.sharedInstance.addShopItem(shopItem: shopItem)
+                print("Text field: \(textField)")
+            }
+        }))
+        
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
     }
     
 //    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -129,8 +173,10 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            shoppingItemsObjects.remove(at: indexPath.row)
 //   Delete the row from the data source
+        ShoppingItemService.sharedInstance.deleteShopItem(shopItem: self.shoppingItemsObjects[indexPath.row] )
+            shoppingItemsObjects.remove(at: indexPath.row)
+
             tableView.deleteRows(at: [indexPath], with: .fade)
             
         } else if editingStyle == .insert {
