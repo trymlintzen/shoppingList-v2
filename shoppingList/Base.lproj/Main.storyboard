@@ -146,6 +146,8 @@
                             <outlet property="delegate" destination="1vu-jD-xtM" id="YZb-TN-eTE"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RTx-Fb-ySd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

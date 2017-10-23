@@ -8,12 +8,15 @@
 
 import UIKit
 
-class ShoppingDetailCell: UITableViewCell {
+class ShoppingDetailCell: UITableViewCell  {
     
     @IBOutlet weak var ItemImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var weightLabel: UILabel!
+//    @IBOutlet weak var nameLabel: UILabel!
+//    @IBOutlet weak var priceLabel: UILabel!
+//    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var priceField: UITextField!
+    @IBOutlet weak var weightField: UITextField!
     
     
     override func awakeFromNib() {
@@ -26,5 +29,8 @@ class ShoppingDetailCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+
+
     
 }

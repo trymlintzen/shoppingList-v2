@@ -35,6 +35,11 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
                                                selector: #selector(shoppingListTableViewController.addNotifyObservers),
                                                name: NSNotification.Name(rawValue: notificationIDs.addShoppingID),
                                                object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(shoppingListTableViewController.changeNotifyObservers),
+                                               name: NSNotification.Name(rawValue: notificationIDs.changeShoppingID),
+                                               object: nil)
         
         ShoppingItemService.sharedInstance.getShoppingListData()
         
@@ -61,6 +66,20 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         shoppingItemsObjects.append(oneObject!)
         self.tableView.reloadData()
     }
+    
+    @objc func changeNotifyObservers(notification: NSNotification) {
+        var changeShopItemDict = notification.userInfo as! Dictionary<String, ShoppingItems>
+        let oneObject = changeShopItemDict[dictKey.shoppingData]
+        self.shoppingItemsObjects = shoppingItemsObjects.map { (item) -> ShoppingItems in
+            if item.id == oneObject?.id {
+                return oneObject!
+            } else {
+                return item
+            }
+       }
+         self.tableView.reloadData()
+    }
+//        shoppingItemsObjects.append(oneObject!)
     
     
     
@@ -141,9 +160,6 @@ class shoppingListTableViewController: UITableViewController, UINavigationContro
         self.present(alert, animated: true, completion: nil)
     }
     
-//    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-//          view.endEditing(true)
-//    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     

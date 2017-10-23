@@ -10,10 +10,13 @@ import Foundation
 
 struct dictKey {
     static let shoppingData = "data"
+    static let imageURLKey  = "imageURLKey"
 }
 struct notificationIDs {
     static let shoppingID = "ShoppingItemListener"
     static let addShoppingID = "ShoppingItemAdd"
+    static let changeShoppingID = "ChangeShoppingID"
+    static let imageUploadedID = "imageUploadedID"
 }
 
 struct seguesIdentifiers {
