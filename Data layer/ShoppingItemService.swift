@@ -42,10 +42,6 @@ class ShoppingItemService {
                                                     userInfo: [dictKey.shoppingData : itemObject])
                 }
             })
-        
-//        ref.child("ShoppingItems").observe(., with: { (snapshot) in
-//        })
-//
     }
     
     func dictToObject(shoppingItem: NSDictionary) -> [ShoppingItems] {

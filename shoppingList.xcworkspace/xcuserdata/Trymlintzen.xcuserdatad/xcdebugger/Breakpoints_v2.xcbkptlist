@@ -143,8 +143,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "deleteShopItem(shopItem:)"
-            landmarkType = "7">
+            landmarkName = "ShoppingItemService"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -159,7 +159,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "addShopItem(shopItem:)"
+            landmarkName = "deleteShopItem(shopItem:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
