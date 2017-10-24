@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shoppingList/shoppingListTableViewController.swift"
-            timestampString = "530467612.381315"
+            timestampString = "530547456.164422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
@@ -26,12 +26,121 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shoppingList/shoppingListTableViewController.swift"
-            timestampString = "530467612.381702"
+            timestampString = "530547456.166683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "changeNotifyObservers(notification:)"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "shoppingListTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shoppingList/shoppingListTableViewController.swift"
+            timestampString = "530547456.167267"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "shoppingListTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shoppingList.shoppingListTableViewController.textFieldOutlet.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "shoppingList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Trymlintzen/Documents/The%20App%20Academy/Xcode-project/shoppingList%20v2/shoppingList/shoppingListTableViewController.swift"
+                  timestampString = "530547456.762643"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "79">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shoppingList.shoppingListTableViewController.textFieldOutlet.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "shoppingList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Trymlintzen/Documents/The%20App%20Academy/Xcode-project/shoppingList%20v2/shoppingList/shoppingListTableViewController.swift"
+                  timestampString = "530547456.765286"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shoppingList.shoppingListTableViewController.init(style: __C.UITableViewStyle) -&gt; shoppingList.shoppingListTableViewController"
+                  moduleName = "shoppingList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Trymlintzen/Documents/The%20App%20Academy/Xcode-project/shoppingList%20v2/shoppingList/shoppingListTableViewController.swift"
+                  timestampString = "530547456.76771"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "1264">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shoppingList.shoppingListTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; shoppingList.shoppingListTableViewController"
+                  moduleName = "shoppingList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Trymlintzen/Documents/The%20App%20Academy/Xcode-project/shoppingList%20v2/shoppingList/shoppingListTableViewController.swift"
+                  timestampString = "530547456.77044"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "1297">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "shoppingList.shoppingListTableViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;shoppingList.shoppingListTableViewController&gt;"
+                  moduleName = "shoppingList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Trymlintzen/Documents/The%20App%20Academy/Xcode-project/shoppingList%20v2/shoppingList/shoppingListTableViewController.swift"
+                  timestampString = "530547456.772921"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "1214">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Data layer/ShoppingItemService.swift"
+            timestampString = "530547456.167715"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getShoppingListData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

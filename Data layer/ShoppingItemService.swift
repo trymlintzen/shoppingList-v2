@@ -141,16 +141,16 @@ class ShoppingItemService {
             let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
                 / Double(snapshot.progress!.totalUnitCount)
             print(percentComplete)
+            SVProgressHUD.showProgress(Float(percentComplete), status: "\(percentComplete.rounded())")
         }
         
         uploadTask.observe(.success) { snapshot in
             // Upload completed successfully
             snapshot.reference.downloadURL(completion: { (url, error) in
-                
+                SVProgressHUD.dismiss()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIDs.imageUploadedID),
                                                 object: self,
                                                 userInfo: [dictKey.imageURLKey : url])
-                
             })
             print("success")
         }
